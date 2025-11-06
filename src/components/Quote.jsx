@@ -17,18 +17,19 @@ const Quote = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentQuote(quotes[Math.floor(Math.random() * quotes.length)]);
-    }, 10000); // Change quote every 10 seconds
+    }, 10000);
 
     return () => clearInterval(interval);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [language]);
+  }, [language, quotes]);
 
   return (
-    <section className="quote-section">
-      <div className="container">
-        <div className="quote-card">
-          <FaQuoteLeft className="quote-icon" />
-          <blockquote className="quote-text">{currentQuote}</blockquote>
+    <section className="py-16 bg-black text-white">
+      <div className="max-w-[1200px] mx-auto px-6">
+        <div className="text-center max-w-3xl mx-auto">
+          <FaQuoteLeft className="text-5xl opacity-50 mb-4 mx-auto" />
+          <blockquote className="text-2xl italic leading-relaxed text-white">
+            {currentQuote}
+          </blockquote>
         </div>
       </div>
     </section>

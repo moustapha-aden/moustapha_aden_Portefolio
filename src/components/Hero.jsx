@@ -12,7 +12,6 @@ const Hero = () => {
   const [charIndex, setCharIndex] = useState(0);
 
   useEffect(() => {
-    // Reset typing when language changes
     setTypedText('');
     setCharIndex(0);
     setIsDeleting(false);
@@ -38,7 +37,6 @@ const Hero = () => {
     }, isDeleting ? deleteSpeed : typeSpeed);
 
     return () => clearTimeout(timer);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [charIndex, isDeleting, fullText]);
 
   const socialLinks = [
@@ -49,87 +47,93 @@ const Hero = () => {
   ];
 
   return (
-    <section id="hero" className="hero">
-      <div className="container">
-        <div className="hero-content">
-          <div className="hero-image-wrapper">
-            <div className="hero-image-container">
+    <section id="hero" className="min-h-screen flex items-center justify-center pt-32 pb-16 bg-black text-white relative overflow-hidden">
+      <div className="absolute inset-0 opacity-30" style={{
+        backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
+      }}></div>
+      <div className="max-w-[1200px] mx-auto px-6 relative z-10">
+        <div className="flex items-center justify-center gap-16 flex-wrap">
+          <div className="flex-shrink-0">
+            <div className="relative w-[300px] h-[300px] mx-auto mb-8">
               <img 
                 src="/images/profil.jpg" 
                 alt="Moustapha Aden" 
-                className="hero-profile-image"
+                className="w-full h-full object-cover rounded-full border-[5px] border-white/30 shadow-[0_20px_60px_rgba(0,0,0,0.3)] transition-all duration-300 animate-float hover:scale-105 hover:shadow-[0_25px_70px_rgba(0,0,0,0.4)]"
                 onError={(e) => {
-                  // Si l'image n'existe pas, utiliser une image placeholder
                   e.target.src = "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&q=80";
                 }}
               />
             </div>
           </div>
-          <div className="hero-text">
-            <h1 className="hero-title">
-              {t.hero.greeting} <span className="highlight">{t.hero.name}</span>!
+          <div className="flex-1 min-w-[300px] text-center">
+            <h1 className="text-5xl md:text-6xl font-extrabold mb-4 leading-tight">
+              {t.hero.greeting} <span className="text-white font-black">{t.hero.name}</span>!
             </h1>
-            <div className="typing-container">
-              <span className="typing-text">
+            <div className="min-h-[60px] flex items-center justify-center my-6">
+              <span className="text-2xl font-medium">
                 {typedText}
-                <span className="cursor">|</span>
+                <span className="animate-blink text-white">|</span>
               </span>
             </div>
-            <p className="hero-subtitle">
+            <p className="text-xl mb-8 opacity-90">
               {t.hero.subtitle}
             </p>
-            <div className="hero-stats">
-              <div className="stat-item">
+            <div className="flex justify-center gap-12 my-8 flex-wrap">
+              <div className="text-center flex justify-center">
                 <a
                   href="https://github.com/moustapha-aden"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="stat-badge-link"
+                  className="inline-block transition-all duration-300 hover:-translate-y-1 hover:opacity-90"
                 >
                   <img
                     src="https://img.shields.io/github/followers/moustapha-aden?style=for-the-badge&logo=github&logoColor=white&labelColor=24292e&color=0366d6"
                     alt="GitHub followers"
-                    className="stat-badge"
+                    className="h-7 block"
                   />
                 </a>
               </div>
-              <div className="stat-item">
+              <div className="text-center flex justify-center">
                 <a
                   href="https://github.com/moustapha-aden"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="stat-badge-link"
+                  className="inline-block transition-all duration-300 hover:-translate-y-1 hover:opacity-90"
                 >
                   <img
                     src="https://img.shields.io/github/stars/moustapha-aden?style=for-the-badge&logo=github&logoColor=white&labelColor=24292e&color=0366d6"
                     alt="GitHub stars"
-                    className="stat-badge"
+                    className="h-7 block"
                   />
                 </a>
               </div>
-              <div className="stat-item">
+              <div className="text-center flex justify-center">
                 <a
                   href="https://github.com/moustapha-aden"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="stat-badge-link"
+                  className="inline-block transition-all duration-300 hover:-translate-y-1 hover:opacity-90"
                 >
                   <img
                     src="https://komarev.com/ghpvc/?username=moustapha-aden&style=for-the-badge&color=0366d6"
                     alt="Profile Views"
-                    className="stat-badge"
+                    className="h-7 block"
                   />
                 </a>
               </div>
             </div>
-            <div className="hero-social">
+            <div className="flex justify-center gap-6 mt-8">
               {socialLinks.map((link, index) => (
                 <a
                   key={index}
                   href={link.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="social-link"
+                  className={`w-12 h-12 flex items-center justify-center rounded-full text-2xl transition-all duration-300 backdrop-blur-md border border-white/20 ${
+                    link.label === 'GitHub' 
+                      ? 'bg-white/15 text-white hover:bg-[#181717] hover:border-[#181717]' 
+                      : 'bg-white/10 text-white hover:bg-white/20 hover:border-white/30'
+                  } hover:-translate-y-1 hover:shadow-[0_5px_15px_rgba(0,0,0,0.3)]`}
                   aria-label={link.label}
                   style={{ '--social-color': link.color }}
                 >
@@ -145,4 +149,3 @@ const Hero = () => {
 };
 
 export default Hero;
-

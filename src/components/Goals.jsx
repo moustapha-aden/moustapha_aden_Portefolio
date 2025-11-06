@@ -63,16 +63,25 @@ const Goals = () => {
   ];
 
   const GoalList = ({ title, goals, icon: Icon }) => (
-    <div className="goals-category">
-      <div className="goals-category-header">
-        <Icon className="goals-icon" />
-        <h3>{title}</h3>
+    <div className="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-md border border-gray-200 dark:border-gray-700">
+      <div className="flex items-center gap-4 mb-6">
+        <Icon className="text-3xl text-black dark:text-white" />
+        <h3 className="text-2xl font-bold text-gray-900 dark:text-white">{title}</h3>
       </div>
-      <ul className="goals-list">
+      <ul className="list-none">
         {goals.map((goal, index) => (
-          <li key={index} className={`goal-item ${goal.completed ? 'completed' : ''}`}>
-            {goal.completed ? <FaCheckCircle className="goal-icon" /> : <FaCircle className="goal-icon" />}
-            <span>{goal[language]}</span>
+          <li 
+            key={index} 
+            className={`flex items-center gap-4 p-4 mb-2 rounded-lg transition-all duration-300 ${
+              goal.completed ? 'opacity-70' : ''
+            } hover:bg-gray-100 dark:hover:bg-gray-700`}
+          >
+            {goal.completed ? (
+              <FaCheckCircle className="text-xl text-gray-600 dark:text-gray-400" />
+            ) : (
+              <FaCircle className="text-xl text-gray-600 dark:text-gray-400" />
+            )}
+            <span className="text-gray-900 dark:text-white">{goal[language]}</span>
           </li>
         ))}
       </ul>
@@ -80,10 +89,12 @@ const Goals = () => {
   );
 
   return (
-    <section id="goals" className="goals">
-      <div className="container">
-        <h2 className="section-title">{t.goals.title}</h2>
-        <div className="goals-grid">
+    <section id="goals" className="goals py-20">
+      <div className="max-w-[1200px] mx-auto px-6">
+        <h2 className="text-4xl font-bold text-center mb-12 text-gray-900 dark:text-white">
+          {t.goals.title}
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <GoalList 
             title={t.goals.technical}
             goals={technicalGoals} 

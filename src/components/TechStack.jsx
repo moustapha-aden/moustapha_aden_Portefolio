@@ -36,16 +36,20 @@ const TechStack = () => {
   ];
 
   const TechCategory = ({ title, items, icon: Icon }) => (
-    <div className="tech-category">
-      <div className="tech-category-header">
-        <Icon className="tech-category-icon" />
-        <h3>{title}</h3>
+    <div className="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-md border border-gray-200 dark:border-gray-700">
+      <div className="flex items-center gap-4 mb-6">
+        <Icon className="text-3xl text-black dark:text-white" />
+        <h3 className="text-2xl font-bold text-gray-900 dark:text-white">{title}</h3>
       </div>
-      <div className="tech-items">
+      <div className="flex flex-wrap gap-4">
         {items.map((item, index) => (
-          <div key={index} className="tech-item" style={{ '--tech-color': item.color }}>
-            <item.icon className="tech-icon" />
-            <span className="tech-name">{item.name}</span>
+          <div 
+            key={index} 
+            className="flex items-center gap-2 px-4 py-3 bg-gray-100 dark:bg-gray-700 rounded-lg transition-all duration-300 border border-gray-200 dark:border-gray-600 hover:-translate-y-0.5 hover:shadow-md"
+            style={{ '--tech-color': item.color }}
+          >
+            <item.icon className="text-2xl" style={{ color: item.color }} />
+            <span className="font-medium text-gray-900 dark:text-white">{item.name}</span>
           </div>
         ))}
       </div>
@@ -53,10 +57,12 @@ const TechStack = () => {
   );
 
   return (
-    <section id="tech" className="tech-stack">
-      <div className="container">
-        <h2 className="section-title">{t.tech.title}</h2>
-        <div className="tech-grid">
+    <section id="tech" className="tech-stack py-20">
+      <div className="max-w-[1200px] mx-auto px-6">
+        <h2 className="text-4xl font-bold text-center mb-12 text-gray-900 dark:text-white">
+          {t.tech.title}
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <TechCategory 
             title={t.tech.languages}
             items={languages} 
@@ -79,4 +85,3 @@ const TechStack = () => {
 };
 
 export default TechStack;
-

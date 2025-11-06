@@ -17,7 +17,7 @@ function App() {
   return (
     <ThemeProvider>
       <LanguageProvider>
-        <div className="App">
+        <div className="min-h-screen">
           <Header />
           <main>
             <Hero />
