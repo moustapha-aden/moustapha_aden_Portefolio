@@ -42,10 +42,10 @@ const Hero = () => {
   }, [charIndex, isDeleting, fullText]);
 
   const socialLinks = [
-    { icon: FaGithub, url: 'https://github.com/moustapha-aden', label: 'GitHub' },
-    { icon: FaLinkedin, url: 'https://www.linkedin.com/in/moustapha-aden-diriyeh-344569225/', label: 'LinkedIn' },
-    { icon: FaEnvelope, url: 'mailto:moustaphaaden232020@gmail.com', label: 'Email' },
-    { icon: FaTwitter, url: 'https://x.com/MoustaphaA253', label: 'Twitter' },
+    { icon: FaGithub, url: 'https://github.com/moustapha-aden', label: 'GitHub', color: '#181717' },
+    { icon: FaLinkedin, url: 'https://www.linkedin.com/in/moustapha-aden-diriyeh-344569225/', label: 'LinkedIn', color: '#0077B5' },
+    { icon: FaEnvelope, url: 'mailto:moustaphaaden232020@gmail.com', label: 'Email', color: '#EA4335' },
+    { icon: FaTwitter, url: 'https://x.com/MoustaphaA253', label: 'Twitter', color: '#1DA1F2' },
   ];
 
   return (
@@ -131,6 +131,7 @@ const Hero = () => {
                   rel="noopener noreferrer"
                   className="social-link"
                   aria-label={link.label}
+                  style={{ '--social-color': link.color }}
                 >
                   <link.icon />
                 </a>

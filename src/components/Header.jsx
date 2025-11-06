@@ -1,12 +1,14 @@
 import { useState, useEffect } from 'react';
-import { FaBars, FaTimes } from 'react-icons/fa';
+import { FaBars, FaTimes, FaMoon, FaSun } from 'react-icons/fa';
 import { useLanguage } from '../context/LanguageContext';
+import { useTheme } from '../context/ThemeContext';
 import { translations } from '../translations';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const { language, toggleLanguage } = useLanguage();
+  const { theme, toggleTheme } = useTheme();
   const t = translations[language];
 
   useEffect(() => {
@@ -56,6 +58,14 @@ const Header = () => {
             ))}
           </nav>
           <div className="header-actions">
+            <button
+              className="theme-toggle"
+              onClick={toggleTheme}
+              aria-label="Toggle theme"
+              title={theme === 'light' ? 'Mode sombre' : 'Mode clair'}
+            >
+              {theme === 'light' ? <FaMoon /> : <FaSun />}
+            </button>
             <button
               className="language-toggle"
               onClick={toggleLanguage}

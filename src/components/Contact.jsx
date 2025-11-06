@@ -11,25 +11,29 @@ const Contact = () => {
       icon: FaGithub, 
       url: 'https://github.com/moustapha-aden', 
       label: 'GitHub',
-      text: t.contact.github
+      text: t.contact.github,
+      color: '#181717'
     },
     { 
       icon: FaLinkedin, 
       url: 'https://www.linkedin.com/in/moustapha-aden-diriyeh-344569225/', 
       label: 'LinkedIn',
-      text: t.contact.linkedin
+      text: t.contact.linkedin,
+      color: '#0077B5'
     },
     { 
       icon: FaEnvelope, 
       url: 'mailto:moustaphaaden232020@gmail.com', 
       label: 'Email',
-      text: t.contact.email
+      text: t.contact.email,
+      color: '#EA4335'
     },
     { 
       icon: FaTwitter, 
       url: 'https://x.com/MoustaphaA253', 
       label: 'Twitter',
-      text: t.contact.twitter
+      text: t.contact.twitter,
+      color: '#1DA1F2'
     }
   ];
 
@@ -48,6 +52,7 @@ const Contact = () => {
               target="_blank"
               rel="noopener noreferrer"
               className="contact-card"
+              style={{ '--contact-color': contact.color }}
             >
               <contact.icon className="contact-icon" />
               <h3>{contact.label}</h3>

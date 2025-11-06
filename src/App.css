@@ -6,30 +6,31 @@
 }
 
 :root {
-  --primary-color: #4F46E5;
-  --secondary-color: #10B981;
-  --accent-color: #F59E0B;
-  --text-primary: #1F2937;
-  --text-secondary: #6B7280;
+  --primary-color: #000000;
+  --secondary-color: #000000;
+  --accent-color: #000000;
+  --text-primary: #000000;
+  --text-secondary: #4A4A4A;
   --bg-primary: #FFFFFF;
-  --bg-secondary: #F9FAFB;
-  --bg-dark: #111827;
+  --bg-secondary: #F5F5F5;
+  --bg-dark: #000000;
   --bg-card: #FFFFFF;
-  --border-color: #E5E7EB;
+  --border-color: #E0E0E0;
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.15);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.2);
   --transition: all 0.3s ease;
 }
 
 [data-theme="dark"] {
-  --text-primary: #F9FAFB;
-  --text-secondary: #D1D5DB;
-  --bg-primary: #111827;
-  --bg-secondary: #1F2937;
-  --bg-card: #1F2937;
-  --border-color: #374151;
+  --text-primary: #FFFFFF;
+  --text-secondary: #B0B0B0;
+  --bg-primary: #000000;
+  --bg-secondary: #1A1A1A;
+  --bg-card: #1A1A1A;
+  --bg-dark: #000000;
+  --border-color: #333333;
 }
 
 body {
@@ -79,10 +80,7 @@ body {
 .logo-text {
   font-size: 1.5rem;
   font-weight: 700;
-  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #000000;
 }
 
 .nav {
@@ -124,6 +122,29 @@ body {
   gap: 1rem;
 }
 
+.theme-toggle {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.theme-toggle:hover {
+  background: var(--primary-color);
+  color: white;
+  border-color: var(--primary-color);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
 .language-toggle {
   background: var(--bg-secondary);
   border: 1px solid var(--border-color);
@@ -137,9 +158,9 @@ body {
 }
 
 .language-toggle:hover {
-  background: var(--primary-color);
+  background: #000000;
   color: white;
-  border-color: var(--primary-color);
+  border-color: #000000;
   transform: translateY(-2px);
   box-shadow: var(--shadow-md);
 }
@@ -160,10 +181,14 @@ body {
   align-items: center;
   justify-content: center;
   padding: 8rem 0 4rem;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: var(--bg-dark);
   color: white;
   position: relative;
   overflow: hidden;
+}
+
+[data-theme="dark"] .hero {
+  background: #000000;
 }
 
 .hero::before {
@@ -238,7 +263,8 @@ body {
 }
 
 .highlight {
-  color: #FCD34D;
+  color: #FFFFFF;
+  font-weight: 900;
 }
 
 .typing-container {
@@ -256,7 +282,7 @@ body {
 
 .cursor {
   animation: blink 1s infinite;
-  color: #FCD34D;
+  color: #FFFFFF;
 }
 
 @keyframes blink {
@@ -315,15 +341,30 @@ body {
   justify-content: center;
   background: rgba(255, 255, 255, 0.1);
   border-radius: 50%;
-  color: white;
+  color: var(--social-color, white);
   font-size: 1.5rem;
   transition: var(--transition);
   backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* GitHub spécifique - couleur plus claire pour visibilité */
+.social-link[aria-label="GitHub"] {
+  color: #FFFFFF;
+  background: rgba(255, 255, 255, 0.15);
 }
 
 .social-link:hover {
-  background: rgba(255, 255, 255, 0.2);
+  background: var(--social-color, rgba(255, 255, 255, 0.2));
+  color: white;
   transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  border-color: var(--social-color, rgba(255, 255, 255, 0.3));
+}
+
+.social-link[aria-label="GitHub"]:hover {
+  background: #181717;
+  border-color: #181717;
 }
 
 /* Section Styles */
@@ -403,11 +444,12 @@ section {
 }
 
 .fun-fact {
-  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  background: var(--bg-dark);
   color: white;
   padding: 1.5rem;
   border-radius: 12px;
   margin-top: 2rem;
+  border: 2px solid var(--bg-dark);
 }
 
 .fun-fact-icon {
@@ -546,16 +588,16 @@ section {
 }
 
 .github-btn:hover {
-  background: var(--bg-dark);
+  background: #000000;
   color: white;
   transform: translateY(-2px);
   box-shadow: var(--shadow-md);
 }
 
 .demo-btn {
-  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  background: #000000;
   color: white;
-  border: none;
+  border: 2px solid #000000;
 }
 
 .demo-btn:hover {
@@ -592,7 +634,7 @@ section {
 
 .tech-category-icon {
   font-size: 2rem;
-  color: var(--primary-color);
+  color: #000000;
 }
 
 .tech-category-header h3 {
@@ -725,7 +767,7 @@ section {
 
 .goals-icon {
   font-size: 2rem;
-  color: var(--primary-color);
+  color: #000000;
 }
 
 .goals-category-header h3 {
@@ -792,14 +834,26 @@ section {
 
 .contact-card:hover {
   transform: translateY(-5px);
-  box-shadow: var(--shadow-xl);
-  border-color: var(--primary-color);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  border-color: var(--contact-color, #000000);
+  background: var(--bg-secondary);
+}
+
+[data-theme="dark"] .contact-card:hover {
+  background: var(--bg-card);
+  box-shadow: 0 10px 25px rgba(255, 255, 255, 0.1);
 }
 
 .contact-icon {
   font-size: 3rem;
-  color: var(--primary-color);
+  color: var(--contact-color, #000000);
   margin-bottom: 1rem;
+  transition: var(--transition);
+}
+
+.contact-card:hover .contact-icon {
+  transform: scale(1.1);
+  color: var(--contact-color, #000000);
 }
 
 .contact-card h3 {
@@ -813,7 +867,7 @@ section {
 
 /* Quote Section */
 .quote-section {
-  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  background: var(--bg-dark);
   color: white;
   padding: 4rem 0;
 }

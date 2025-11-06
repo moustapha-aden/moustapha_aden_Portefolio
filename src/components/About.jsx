@@ -12,8 +12,8 @@ const About = () => {
     },
     location: "Djibouti 🇩🇯",
     education: {
-      fr: "Diplômé en Génie Logiciel",
-      en: "Software Engineering Graduate"
+      fr: "Diplômé en Informatique",
+      en: "Graduate in Computer Science"
     },
     languages: {
       fr: ["Français", "Arabe", "Somali", "Anglais"],

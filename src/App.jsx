@@ -1,4 +1,5 @@
 import { LanguageProvider } from './context/LanguageContext';
+import { ThemeProvider } from './context/ThemeContext';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -14,23 +15,25 @@ import './App.css';
 
 function App() {
   return (
-    <LanguageProvider>
-      <div className="App">
-        <Header />
-        <main>
-          <Hero />
-          <About />
-          <Projects />
-          <TechStack />
-          <GitHubStats />
-          <Goals />
-          <Contact />
-          <Quote />
-          <SnakeAnimation />
-        </main>
-        <Footer />
-      </div>
-    </LanguageProvider>
+    <ThemeProvider>
+      <LanguageProvider>
+        <div className="App">
+          <Header />
+          <main>
+            <Hero />
+            <About />
+            <Projects />
+            <TechStack />
+            <GitHubStats />
+            <Goals />
+            <Contact />
+            <Quote />
+            <SnakeAnimation />
+          </main>
+          <Footer />
+        </div>
+      </LanguageProvider>
+    </ThemeProvider>
   );
 }
 
