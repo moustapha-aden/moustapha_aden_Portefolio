@@ -98,25 +98,35 @@ src/
 └── index.css               # Styles globaux
 ```
 
-## 🌐 Déploiement
+## 🌐 Déploiement avec Nom de Domaine
 
-### Vercel
-```bash
-npm run build
-# Puis déployez le dossier dist/ sur Vercel
-```
+### Vercel (Recommandé)
+1. Créez un compte sur [vercel.com](https://vercel.com)
+2. Connectez votre repository GitHub
+3. Vercel détectera automatiquement Vite et déploiera
+4. Dans Settings → Domains, ajoutez votre nom de domaine
+5. Configurez les DNS selon les instructions Vercel
 
 ### Netlify
-```bash
-npm run build
-# Puis déployez le dossier dist/ sur Netlify
-```
+1. Créez un compte sur [netlify.com](https://netlify.com)
+2. Connectez votre repository GitHub
+3. Configurez : Build command: `npm run build`, Publish: `dist`
+4. Dans Domain settings, ajoutez votre domaine personnalisé
 
 ### GitHub Pages
-```bash
-npm run build
-# Configurez GitHub Pages pour servir le dossier dist/
-```
+1. Installez gh-pages : `npm install --save-dev gh-pages`
+2. Ajoutez dans package.json :
+   ```json
+   "homepage": "https://votre-username.github.io/Portfolio",
+   "scripts": {
+     "predeploy": "npm run build",
+     "deploy": "gh-pages -d dist"
+   }
+   ```
+3. Déployez : `npm run deploy`
+4. Créez un fichier `CNAME` dans `public/` avec votre domaine
+
+📖 **Guide complet** : Voir [DEPLOYMENT.md](./DEPLOYMENT.md) pour les instructions détaillées.
 
 ## 📝 Notes
 
