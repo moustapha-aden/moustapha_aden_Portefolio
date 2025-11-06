@@ -1,3 +1,4 @@
+import { useState, useEffect, useRef } from 'react';
 import { FaGithub } from 'react-icons/fa';
 import { useLanguage } from '../context/LanguageContext';
 import { translations } from '../translations';
@@ -5,6 +6,9 @@ import { translations } from '../translations';
 const Projects = () => {
   const { language } = useLanguage();
   const t = translations[language];
+  const [visibleProjects, setVisibleProjects] = useState([]);
+  const projectsRef = useRef([]);
+  const sectionRef = useRef(null);
 
   const projects = [
     {
@@ -53,48 +57,101 @@ const Projects = () => {
     }
   ];
 
+  useEffect(() => {
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.1
+    };
+
+    const observerCallback = (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const projectId = parseInt(entry.target.dataset.projectId);
+          setVisibleProjects((prev) => {
+            if (!prev.includes(projectId)) {
+              return [...prev, projectId];
+            }
+            return prev;
+          });
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+    // Use setTimeout to ensure refs are set after render
+    const timeoutId = setTimeout(() => {
+      projectsRef.current.forEach((ref) => {
+        if (ref) observer.observe(ref);
+      });
+    }, 100);
+
+    return () => {
+      clearTimeout(timeoutId);
+      projectsRef.current.forEach((ref) => {
+        if (ref) observer.unobserve(ref);
+      });
+    };
+  }, []);
+
   return (
-    <section id="projects" className="projects">
+    <section id="projects" className="projects" ref={sectionRef}>
       <div className="container">
         <h2 className="section-title">{t.projects.title}</h2>
         <div className="projects-grid">
-          {projects.map((project) => (
-            <div key={project.id} className="project-card">
-              <div className="project-image">
-                <img src={project.image} alt={project.name} />
-                <div className="project-overlay">
-                  <a
-                    href={project.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="project-link"
-                    aria-label="View on GitHub"
-                  >
-                    <FaGithub />
-                  </a>
+          {projects.map((project, index) => {
+            const isVisible = visibleProjects.includes(project.id);
+            return (
+              <div
+                key={project.id}
+                ref={(el) => (projectsRef.current[index] = el)}
+                data-project-id={project.id}
+                className={`project-card ${isVisible ? 'animate-in' : ''}`}
+                style={{ animationDelay: `${index * 0.15}s` }}
+              >
+                <div className="project-image">
+                  <img src={project.image} alt={project.name} />
+                  <div className="project-overlay">
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="project-link"
+                      aria-label="View on GitHub"
+                    >
+                      <FaGithub />
+                    </a>
+                  </div>
+                </div>
+                <div className="project-content">
+                  <h3 className="project-name">{project.name}</h3>
+                  <p className="project-description">{project.description[language]}</p>
+                  <div className="project-tags">
+                    {project.tags.map((tag, tagIndex) => (
+                      <span 
+                        key={tagIndex} 
+                        className="project-tag"
+                        style={{ animationDelay: `${(index * 0.15) + (tagIndex * 0.1) + 0.3}s` }}
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                  <div className="project-links">
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="project-btn github-btn"
+                    >
+                      <FaGithub /> {t.projects.code}
+                    </a>
+                  </div>
                 </div>
               </div>
-              <div className="project-content">
-                <h3 className="project-name">{project.name}</h3>
-                <p className="project-description">{project.description[language]}</p>
-                <div className="project-tags">
-                  {project.tags.map((tag, index) => (
-                    <span key={index} className="project-tag">{tag}</span>
-                  ))}
-                </div>
-                <div className="project-links">
-                  <a
-                    href={project.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="project-btn github-btn"
-                  >
-                    <FaGithub /> {t.projects.code}
-                  </a>
-                </div>
-              </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>
