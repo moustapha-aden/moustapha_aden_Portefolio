@@ -129,15 +129,17 @@ const Hero = () => {
                   href={link.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`w-12 h-12 flex items-center justify-center rounded-full text-2xl transition-all duration-300 backdrop-blur-md border border-white/20 ${
-                    link.label === 'GitHub' 
-                      ? 'bg-white/15 text-white hover:bg-[#181717] hover:border-[#181717]' 
-                      : 'bg-white/10 text-white hover:bg-white/20 hover:border-white/30'
-                  } hover:-translate-y-1 hover:shadow-[0_5px_15px_rgba(0,0,0,0.3)]`}
+                  className="social-icon-link"
                   aria-label={link.label}
-                  style={{ '--social-color': link.color }}
+                  style={{ 
+                    '--social-color': link.color,
+                    animationDelay: `${index * 0.1}s`
+                  }}
                 >
-                  <link.icon />
+                  <div className="social-icon-wrapper">
+                    <link.icon className="social-icon" />
+                    <div className="social-icon-glow" style={{ backgroundColor: link.color }}></div>
+                  </div>
                 </a>
               ))}
             </div>
