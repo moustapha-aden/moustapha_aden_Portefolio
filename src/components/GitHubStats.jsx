@@ -14,12 +14,13 @@ const GitHubStats = () => {
           <div className="stat-card">
             <h3>{t.github.stats}</h3>
             <img
-              src={`https://github-readme-stats.vercel.app/api?username=${username}&show_icons=true&theme=tokyonight&hide_border=true&bg_color=0D1117&title_color=00D9FF&icon_color=00D9FF&text_color=C9D1D9&include_all_commits=true&count_private=true`}
+              src={`https://github-readme-stats.vercel.app/api?username=${username}&show_icons=true&theme=tokyonight&hide_border=true&bg_color=0D1117&title_color=00D9FF&icon_color=00D9FF&text_color=C9D1D9`}
               alt="GitHub Stats"
               className="github-stat-image"
               loading="lazy"
               onError={(e) => {
-                e.target.src = `https://github-readme-stats.vercel.app/api?username=${username}&show_icons=true&theme=tokyonight&hide_border=true`;
+                // Fallback sans les paramètres problématiques
+                e.target.src = `https://github-readme-stats.vercel.app/api?username=${username}&show_icons=true&theme=tokyonight&hide_border=true&bg_color=0D1117`;
               }}
             />
           </div>
