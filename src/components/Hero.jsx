@@ -56,7 +56,7 @@ const Hero = () => {
           <div className="flex-shrink-0">
             <div className="relative w-[300px] h-[300px] mx-auto mb-8">
               <img 
-                src="/images/profil.jpg" 
+                src="/images/Profile.jpg" 
                 alt="Moustapha Aden" 
                 className="w-full h-full object-cover rounded-full border-[5px] border-white/30 shadow-[0_20px_60px_rgba(0,0,0,0.3)] transition-all duration-300 animate-float hover:scale-105 hover:shadow-[0_25px_70px_rgba(0,0,0,0.4)]"
                 onError={(e) => {
@@ -87,7 +87,7 @@ const Hero = () => {
                   className="inline-block transition-all duration-300 hover:-translate-y-1 hover:opacity-90"
                 >
                   <img
-                    src="https://img.shields.io/github/followers/moustapha-aden?style=for-the-badge&logo=github&logoColor=white&labelColor=24292e&color=0366d6"
+                    src="https://img.shields.io/github/followers/moustapha-aden?style=for-the-badge&logo=github&logoColor=white&labelColor=24292e&color=0366d6&cacheSeconds=60"
                     alt="GitHub followers"
                     className="h-7 block"
                   />
