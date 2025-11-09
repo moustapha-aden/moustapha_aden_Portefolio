@@ -30,14 +30,14 @@ export const translations = {
     },
     // Tech Stack
     tech: {
-      title: "🛠️ Stack Technique & Outils",
-      languages: "💻 Langages",
-      frameworks: "🚀 Frameworks & Bibliothèques",
-      databases: "🗄️ Bases de données & Outils"
+      title: " Stack Technique & Outils",
+      languages: "Langages",
+      frameworks: " Frameworks & Bibliothèques",
+      databases: " Bases de données & Outils"
     },
     // GitHub Stats
     github: {
-      title: "📊 Statistiques GitHub",
+      title: " Statistiques GitHub",
       stats: "Statistiques GitHub",
       streak: "Série GitHub",
       languages: "Langages les plus utilisés",
@@ -46,13 +46,13 @@ export const translations = {
     },
     // Goals
     goals: {
-      title: "🎯 Objectifs pour 2025",
-      technical: "🚀 Objectifs Techniques",
-      community: "🤝 Objectifs Communautaires"
+      title: " Objectifs pour 2025",
+      technical: "Objectifs Techniques",
+      community: "Objectifs Communautaires"
     },
     // Contact
     contact: {
-      title: "📫 Restons en contact !",
+      title: "Restons en contact !",
       subtitle: "Je suis toujours ouvert à discuter de nouveaux projets, idées créatives ou opportunités pour faire partie de vos visions.",
       github: "Consultez mon code",
       linkedin: "Connectez-vous professionnellement",
