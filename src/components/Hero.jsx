@@ -126,12 +126,14 @@ const Hero = () => {
                 rel="noopener noreferrer"
                 aria-label={link.label}
                 className="transition-transform transform hover:-translate-y-1"
-                style={{ color: link.color }}
               >
-                <link.icon className="w-6 h-6" />
+                <div className="w-10 h-10 flex items-center justify-center rounded-full bg-white shadow-md">
+                  <link.icon className="w-5 h-5" style={{ color: link.color }} />
+                </div>
               </a>
             ))}
           </div>
+
         </div>
       </div>
     </section>
