@@ -138,7 +138,7 @@ const Projects = () => {
       <div className="container">
         <h2 
           ref={titleRef}
-          className={`section-title text-center transition-all duration-700 ${isTitleInView ? 'opacity-100 translate-y-0 revealed' : 'opacity-0 -translate-y-6'}`}
+          className={`section-title text-center text-gray-900 dark:text-white transition-all duration-700 ${isTitleInView ? 'opacity-100 translate-y-0 revealed' : 'opacity-0 -translate-y-6'}`}
         >
           {t.projects.title}
         </h2>
@@ -187,13 +187,13 @@ const Projects = () => {
                   </div>
                 </div>
                 <div className="project-content">
-                  <h3 className="project-name">{project.name}</h3>
-                  <p className="project-description">{project.description[language]}</p>
+                  <h3 className="project-name text-gray-900 dark:text-white">{project.name}</h3>
+                  <p className="project-description text-gray-600 dark:text-gray-300">{project.description[language]}</p>
                   <div className="project-tags">
                     {project.tags.map((tag, tagIndex) => (
                       <span 
                         key={tagIndex} 
-                        className="project-tag"
+                        className="project-tag text-gray-900 dark:text-white bg-gray-100 dark:bg-gray-700"
                         style={{ animationDelay: `${(index * 0.15) + (tagIndex * 0.1) + 0.3}s` }}
                       >
                         {tag}

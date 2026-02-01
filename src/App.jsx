@@ -17,7 +17,7 @@ function App() {
   return (
     <ThemeProvider>
       <LanguageProvider>
-        <div className="min-h-screen">
+        <div className="min-h-screen bg-white text-gray-900 dark:bg-black dark:text-white">
           <Header />
           <main>
             <Hero />

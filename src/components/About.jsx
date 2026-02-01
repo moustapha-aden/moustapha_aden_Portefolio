@@ -72,14 +72,14 @@ const profile = {
           {t.about.title}
         </h2>
         <div className={`grid grid-cols-1 md:grid-cols-2 gap-12 items-center ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ transition: 'opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1)', transitionDelay: isInView ? '150ms' : '0ms' }}>
-          <div className={`bg-[#1E1E1E] rounded-xl overflow-hidden shadow-xl tech-card-animate transition-all duration-700 ${isInView ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'}`} style={{ transitionDelay: isInView ? '250ms' : '0ms' }}>
-            <div className="flex items-center gap-2 p-4 bg-[#2D2D2D]">
+          <div className={`bg-gray-100 dark:bg-[#1E1E1E] rounded-xl overflow-hidden shadow-xl tech-card-animate transition-all duration-700 border border-gray-200 dark:border-transparent ${isInView ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'}`} style={{ transitionDelay: isInView ? '250ms' : '0ms' }}>
+            <div className="flex items-center gap-2 p-4 bg-gray-200 dark:bg-[#2D2D2D]">
               <span className="w-3 h-3 rounded-full bg-[#FF5F56]"></span>
               <span className="w-3 h-3 rounded-full bg-[#FFBD2E]"></span>
               <span className="w-3 h-3 rounded-full bg-[#27C93F]"></span>
-              <span className="text-gray-400 text-sm ml-4">moustapha.js</span>
+              <span className="text-gray-600 dark:text-gray-400 text-sm ml-4">moustapha.js</span>
             </div>
-            <pre className="p-6 text-[#D4D4D4] font-mono text-sm leading-relaxed m-0 overflow-x-auto">
+            <pre className="p-6 text-gray-800 dark:text-[#D4D4D4] font-mono text-sm leading-relaxed m-0 overflow-x-auto">
 {`const moustapha = {
   role: "${profile.role[language]}",
   location: "${profile.location}",
@@ -94,8 +94,8 @@ const profile = {
           <div className={`text-gray-600 dark:text-gray-300 tech-card-animate transition-all duration-700 ${isInView ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'}`} style={{ transitionDelay: isInView ? '350ms' : '0ms' }}>
             <p className="mb-6 text-lg leading-relaxed" dangerouslySetInnerHTML={{ __html: t.about.description1 }} />
             <p className="mb-6 text-lg leading-relaxed" dangerouslySetInnerHTML={{ __html: t.about.description2 }} />
-            <div className="bg-black dark:bg-black text-white p-6 rounded-xl mt-8 border-2 border-black dark:border-black">
-              <p dangerouslySetInnerHTML={{ __html: t.about.funFact }} />
+            <div className="bg-gray-100 dark:bg-black text-gray-900 dark:text-white p-6 rounded-xl mt-8 border-2 border-gray-300 dark:border-black">
+              <p className="text-gray-900 dark:text-white" dangerouslySetInnerHTML={{ __html: t.about.funFact }} />
             </div>
           </div>
         </div>

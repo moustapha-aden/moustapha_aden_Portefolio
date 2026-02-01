@@ -20,7 +20,7 @@ export const translations = {
       title: "🚀 À propos de moi",
       description1: "Je suis un <strong>Développeur Full Stack junior </strong> passionné et <strong>Passionné de Cybersécurité</strong>, diplômé en Informatique. Basé à Djibouti, je maîtrise <strong>TypeScript</strong>, <strong>Python</strong>, <strong>Laravel</strong>, <strong>React</strong>, <strong>React Native</strong> et <strong>Next.js</strong> pour créer des applications web et mobiles modernes.",
       description2: "J'ai développé des projets full-stack avec Laravel et React, des applications mobiles avec React Native (Sakinah), et des plateformes avec Next.js (GEFD). Je maîtrise Python pour l'automatisation et je continue à approfondir la <strong>Cybersécurité</strong>.",
-      funFact: "💡 <strong>Fait amusant :</strong> J'adore automatiser tout ce que je peux ! 🤖"
+      funFact: "<strong>Fait amusant :</strong> J'adore automatiser tout ce que je peux ! "
     },
     // Projects
     projects: {
@@ -96,10 +96,10 @@ export const translations = {
     },
     // About
     about: {
-      title: "🚀 About Me",
+      title: " About Me",
       description1: "I'm a passionate <strong>Full Stack Developer</strong> and <strong>Cybersecurity Enthusiast</strong>, graduated in Computer Science. Based in Djibouti, I master <strong>TypeScript</strong>, <strong>Python</strong>, <strong>Laravel</strong>, <strong>React</strong>, <strong>React Native</strong> and <strong>Next.js</strong> to build modern web and mobile applications.",
       description2: "I've developed full-stack projects with Laravel and React, mobile apps with React Native (Sakinah), and platforms with Next.js (GEFD). I master Python for automation and continue to deepen my knowledge in <strong>Cybersecurity</strong>.",
-      funFact: "💡 <strong>Fun Fact:</strong> I love automating everything I can! 🤖"
+      funFact: " <strong>Fun Fact:</strong> I love automating everything I can! "
     },
     // Projects
     projects: {
@@ -150,7 +150,7 @@ export const translations = {
     },
     // Snake
     snake: {
-      title: "🐍 Watch My Contributions Get Eaten!"
+      title: "Watch My Contributions Get Eaten!"
     },
     // Footer
     footer: {

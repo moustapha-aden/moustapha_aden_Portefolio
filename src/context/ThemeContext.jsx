@@ -12,18 +12,13 @@ export const useTheme = () => {
 
 export const ThemeProvider = ({ children }) => {
   const [theme, setTheme] = useState(() => {
-    // Récupérer le thème depuis localStorage ou utiliser 'light' par défaut
-    return localStorage.getItem('portfolio-theme') || 'light';
+    const saved = localStorage.getItem('portfolio-theme');
+    return saved === 'dark' || saved === 'light' ? saved : 'light';
   });
 
   useEffect(() => {
     localStorage.setItem('portfolio-theme', theme);
-    // Appliquer le thème au document
-    if (theme === 'dark') {
-      document.documentElement.setAttribute('data-theme', 'dark');
-    } else {
-      document.documentElement.removeAttribute('data-theme');
-    }
+    document.documentElement.setAttribute('data-theme', theme);
   }, [theme]);
 
   const toggleTheme = () => {

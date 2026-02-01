@@ -8,13 +8,15 @@
     <meta name="keywords" content="Full Stack Developer, Cybersecurity, Laravel, React, React Native, Next.js, Python, TypeScript, Software Engineering" />
     <meta name="author" content="Moustapha Aden" />
     <title>Moustapha Aden - Full Stack Developer & Cybersecurity Enthusiast</title>
+    <script>
+      (function() {
+        var t = localStorage.getItem('portfolio-theme');
+        document.documentElement.setAttribute('data-theme', (t === 'dark' || t === 'light') ? t : 'light');
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
-    <script>
-      window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
-    </script>
-    <script defer src="/_vercel/speed-insights/script.js"></script>
   </body>
 </html>

@@ -441,6 +441,134 @@ section {
   background-color: #111827 !important;
 }
 
+/* Mode clair : forcer le texte sombre sur les sections à fond clair */
+/* #tech et #contact exclus du * pour garder les couleurs des icônes (brand colors). #projects ciblé à part. */
+[data-theme="light"] #about,
+[data-theme="light"] #about *,
+[data-theme="light"] #github-stats,
+[data-theme="light"] #github-stats *,
+[data-theme="light"] #goals,
+[data-theme="light"] #goals *,
+[data-theme="light"] .snake-section,
+[data-theme="light"] .snake-section * {
+  color: #111827 !important;
+}
+/* Contact : uniquement les textes (titres, labels, paragraphes), pas les icônes */
+[data-theme="light"] #contact .section-title-reveal,
+[data-theme="light"] #contact h2,
+[data-theme="light"] #contact h3,
+[data-theme="light"] #contact > div > p {
+  color: #111827 !important;
+}
+
+/* #projects : uniquement les textes (pas les tags au hover) pour éviter texte noir sur fond noir */
+[data-theme="light"] #projects .section-title,
+[data-theme="light"] #projects .project-name,
+[data-theme="light"] #projects .project-description,
+[data-theme="light"] #projects .project-content,
+[data-theme="light"] #projects .github-btn,
+[data-theme="light"] #projects .demo-btn {
+  color: #111827 !important;
+}
+[data-theme="light"] #projects .github-btn:hover {
+  color: #ffffff !important;
+}
+[data-theme="light"] #projects .demo-btn,
+[data-theme="light"] #projects .demo-btn:hover {
+  color: #ffffff !important;
+}
+[data-theme="light"] #projects .project-tag {
+  color: #111827 !important;
+  background: #f3f4f6 !important;
+}
+[data-theme="light"] #projects .project-card:hover .project-tag {
+  color: #ffffff !important;
+  background: #111827 !important;
+}
+
+[data-theme="light"] #about .text-gray-600,
+[data-theme="light"] #projects .project-description,
+[data-theme="light"] #contact .text-gray-600,
+[data-theme="light"] #contact .contact-card-animate p {
+  color: #4b5563 !important;
+}
+
+/* Projets : mode clair - cartes et texte lisibles */
+[data-theme="light"] .project-card {
+  background: #ffffff !important;
+  border-color: #e5e7eb !important;
+}
+[data-theme="light"] .project-name {
+  color: #111827 !important;
+}
+[data-theme="light"] .project-description {
+  color: #4b5563 !important;
+}
+[data-theme="light"] .project-tag {
+  background: #f3f4f6 !important;
+  color: #111827 !important;
+}
+[data-theme="light"] .project-card:hover .project-tag {
+  background: #111827 !important;
+  color: #ffffff !important;
+}
+[data-theme="light"] .github-btn {
+  background: #f3f4f6 !important;
+  color: #111827 !important;
+  border-color: #d1d5db !important;
+}
+[data-theme="light"] .github-btn:hover {
+  background: #111827 !important;
+  color: #ffffff !important;
+}
+[data-theme="light"] .demo-btn,
+[data-theme="light"] #projects .demo-btn {
+  background: #111827 !important;
+  color: #ffffff !important;
+  border-color: #111827 !important;
+}
+[data-theme="light"] .demo-btn:hover,
+[data-theme="light"] #projects .demo-btn:hover {
+  background: #2563eb !important;
+  color: #ffffff !important;
+}
+[data-theme="light"] .section-title {
+  color: #111827 !important;
+}
+
+/* Section Projets fond en mode clair */
+[data-theme="light"] .projects,
+[data-theme="light"] #projects {
+  background-color: #f9fafb !important;
+}
+
+/* Tech Stack : mode clair - cartes et texte */
+[data-theme="light"] .tech-stack .tech-card-animate,
+[data-theme="light"] #tech .bg-white {
+  background-color: #ffffff !important;
+  border-color: #e5e7eb !important;
+}
+[data-theme="light"] .tech-stack h2,
+[data-theme="light"] .tech-stack h3,
+[data-theme="light"] .tech-stack span.font-medium {
+  color: #111827 !important;
+}
+[data-theme="light"] .tech-stack .bg-gray-100 {
+  background-color: #f3f4f6 !important;
+  border-color: #e5e7eb !important;
+}
+
+/* Header / nav en mode clair */
+[data-theme="light"] header,
+[data-theme="light"] header * {
+  color: #111827 !important;
+}
+
+[data-theme="light"] header a:hover,
+[data-theme="light"] header button {
+  color: #111827 !important;
+}
+
 /* Hero Social Icons Styles */
 .social-icon-link {
   position: relative;

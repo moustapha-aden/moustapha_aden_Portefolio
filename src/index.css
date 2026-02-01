@@ -21,12 +21,17 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
-  color: #000000;
+  color: #111827;
   background-color: #FFFFFF;
 }
 
+[data-theme="light"] body {
+  color: #111827 !important;
+  background-color: #FFFFFF !important;
+}
+
 [data-theme="dark"] body {
-  color: #FFFFFF;
+  color: #f9fafb;
   background-color: #000000;
 }
 
