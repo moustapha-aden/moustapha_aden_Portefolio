@@ -18,7 +18,7 @@ export const translations = {
     // About
     about: {
       title: "🚀 À propos de moi",
-      description1: "Je suis un <strong>Développeur Full Stack</strong> passionné et <strong>Passionné de Cybersécurité</strong>, diplômé en Informatique. Basé à Djibouti, je maîtrise <strong>TypeScript</strong>, <strong>Python</strong>, <strong>Laravel</strong>, <strong>React</strong>, <strong>React Native</strong> et <strong>Next.js</strong> pour créer des applications web et mobiles modernes.",
+      description1: "Je suis un <strong>Développeur Full Stack junior </strong> passionné et <strong>Passionné de Cybersécurité</strong>, diplômé en Informatique. Basé à Djibouti, je maîtrise <strong>TypeScript</strong>, <strong>Python</strong>, <strong>Laravel</strong>, <strong>React</strong>, <strong>React Native</strong> et <strong>Next.js</strong> pour créer des applications web et mobiles modernes.",
       description2: "J'ai développé des projets full-stack avec Laravel et React, des applications mobiles avec React Native (Sakinah), et des plateformes avec Next.js (GEFD). Je maîtrise Python pour l'automatisation et je continue à approfondir la <strong>Cybersécurité</strong>.",
       funFact: "💡 <strong>Fait amusant :</strong> J'adore automatiser tout ce que je peux ! 🤖"
     },

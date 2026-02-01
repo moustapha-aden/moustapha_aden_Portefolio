@@ -1,19 +1,21 @@
 import { useLanguage } from '../context/LanguageContext';
+import { useInView } from '../hooks/useInView';
 import { translations } from '../translations';
 
 const GitHubStats = () => {
   const username = "moustapha-aden";
   const { language } = useLanguage();
   const t = translations[language];
+  const [sectionRef, isInView] = useInView({ threshold: 0.1 });
 
   return (
-    <section id="github-stats" className="github-stats py-20">
+    <section id="github-stats" ref={sectionRef} className="github-stats py-20">
       <div className="max-w-[1200px] mx-auto px-6">
-        <h2 className="text-4xl font-bold text-center mb-12 text-gray-900 dark:text-white">
+        <h2 className={`text-4xl font-bold text-center w-full mb-12 text-gray-900 dark:text-white transition-all duration-700 ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-6'}`}>
           {t.github.title}
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-          <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md border border-gray-200 dark:border-gray-700 flex flex-col overflow-hidden">
+          <div className={`bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md border border-gray-200 dark:border-gray-700 flex flex-col overflow-hidden tech-card-animate transition-all duration-700 ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ transitionDelay: isInView ? '100ms' : '0ms' }}>
             <h3 className="mb-4 text-gray-900 dark:text-white text-xl text-center">
               {t.github.stats}
             </h3>
@@ -27,7 +29,7 @@ const GitHubStats = () => {
               }}
             />
           </div>
-          <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md border border-gray-200 dark:border-gray-700 flex flex-col overflow-hidden">
+          <div className={`bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md border border-gray-200 dark:border-gray-700 flex flex-col overflow-hidden tech-card-animate transition-all duration-700 ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ transitionDelay: isInView ? '200ms' : '0ms' }}>
             <h3 className="mb-4 text-gray-900 dark:text-white text-xl text-center">
               {t.github.streak}
             </h3>
@@ -43,7 +45,7 @@ const GitHubStats = () => {
               />
             </div>
           </div>
-          <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md border border-gray-200 dark:border-gray-700 flex flex-col overflow-hidden">
+          <div className={`bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md border border-gray-200 dark:border-gray-700 flex flex-col overflow-hidden tech-card-animate transition-all duration-700 ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ transitionDelay: isInView ? '300ms' : '0ms' }}>
             <h3 className="mb-4 text-gray-900 dark:text-white text-xl text-center">
               {t.github.languages}
             </h3>
@@ -57,7 +59,7 @@ const GitHubStats = () => {
               }}
             />
           </div>
-          <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md border border-gray-200 dark:border-gray-700 flex flex-col overflow-hidden">
+          <div className={`bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md border border-gray-200 dark:border-gray-700 flex flex-col overflow-hidden tech-card-animate transition-all duration-700 ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ transitionDelay: isInView ? '400ms' : '0ms' }}>
             <h3 className="mb-4 text-gray-900 dark:text-white text-xl text-center">
               {t.github.contributions}
             </h3>
@@ -72,7 +74,7 @@ const GitHubStats = () => {
             />
           </div>
         </div>
-        <div className="text-center">
+        <div className={`text-center transition-all duration-700 ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ transitionDelay: isInView ? '500ms' : '0ms' }}>
           <h3 className="mb-6 text-gray-900 dark:text-white text-xl">
             {t.github.trophies}
           </h3>

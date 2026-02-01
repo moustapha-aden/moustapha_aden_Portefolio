@@ -10,6 +10,12 @@ const Hero = () => {
   const fullText = t.hero.typingText;
   const [isDeleting, setIsDeleting] = useState(false);
   const [charIndex, setCharIndex] = useState(0);
+  const [reveal, setReveal] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setReveal(true), 150);
+    return () => clearTimeout(timer);
+  }, []);
 
   // Timestamp pour forcer le refresh des badges GitHub toutes les 60 secondes
   const [timestamp, setTimestamp] = useState(Date.now());
@@ -62,11 +68,11 @@ const Hero = () => {
       <div className="max-w-[1200px] mx-auto px-6 relative z-10 flex flex-col md:flex-row items-center gap-16">
         {/* Photo */}
         <div className="flex-shrink-0">
-          <div className="relative w-[300px] h-[300px] mx-auto mb-8">
+          <div className={`relative w-[300px] h-[300px] mx-auto mb-8 transition-all duration-700 ease-out ${reveal ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-8 scale-95'}`} style={{ transitionDelay: '0ms' }}>
             <img 
               src="/images/Profile.jpg" 
               alt="Moustapha Aden" 
-              className="w-full h-full object-cover rounded-full border-[5px] border-white/30 shadow-[0_20px_60px_rgba(0,0,0,0.3)] transition-all duration-300 animate-float hover:scale-105 hover:shadow-[0_25px_70px_rgba(0,0,0,0.4)]"
+              className="w-full h-full object-cover rounded-full border-[5px] border-white/30 shadow-[0_20px_60px_rgba(0,0,0,0.3)] transition-all duration-500 hover:scale-105 hover:shadow-[0_25px_70px_rgba(0,0,0,0.4)] animate-float"
               onError={(e) => {
                 e.target.src = "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&q=80";
               }}
@@ -76,23 +82,23 @@ const Hero = () => {
 
         {/* Texte & badges */}
         <div className="flex-1 min-w-[300px] text-center md:text-left">
-          <h1 className="text-5xl md:text-6xl font-extrabold mb-4 leading-tight">
+          <h1 className={`text-5xl md:text-6xl font-extrabold mb-4 leading-tight transition-all duration-700 ease-out ${reveal ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-6'}`} style={{ transitionDelay: '100ms' }}>
             {t.hero.greeting} <span className="text-white font-black">{t.hero.name}</span>!
           </h1>
 
-          <div className="min-h-[60px] flex items-center justify-center md:justify-start my-6">
+          <div className={`min-h-[60px] flex items-center justify-center md:justify-start my-6 transition-all duration-700 ease-out ${reveal ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`} style={{ transitionDelay: '250ms' }}>
             <span className="text-2xl font-medium">
               {typedText}
               <span className="animate-blink text-white">|</span>
             </span>
           </div>
 
-          <p className="text-xl mb-8 opacity-90">
+          <p className={`text-xl mb-8 opacity-90 transition-all duration-700 ease-out ${reveal ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`} style={{ transitionDelay: '400ms' }}>
             {t.hero.subtitle}
           </p>
 
           {/* GitHub badges */}
-          <div className="flex flex-wrap justify-center md:justify-start gap-4 mb-8">
+          <div className={`flex flex-wrap justify-center md:justify-start gap-4 mb-8 transition-all duration-700 ease-out ${reveal ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`} style={{ transitionDelay: '550ms' }}>
             <a href="https://github.com/moustapha-aden" target="_blank" rel="noopener noreferrer">
               <img
                 src={`https://img.shields.io/github/followers/moustapha-aden?style=for-the-badge&logo=github&logoColor=white&labelColor=24292e&color=0366d6&cacheSeconds=60&t=${timestamp}`}
@@ -117,7 +123,7 @@ const Hero = () => {
           </div>
 
           {/* Social links */}
-          <div className="flex justify-center md:justify-start gap-6 mt-4">
+          <div className={`flex justify-center md:justify-start gap-6 mt-4 transition-all duration-700 ease-out ${reveal ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`} style={{ transitionDelay: '700ms' }}>
             {socialLinks.map((link, index) => (
               <a
                 key={index}
@@ -125,7 +131,8 @@ const Hero = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={link.label}
-                className="transition-transform transform hover:-translate-y-1"
+                className="transition-all duration-300 transform hover:-translate-y-1 hover:scale-110 hover:shadow-lg"
+                style={{ transitionDelay: reveal ? `${800 + index * 80}ms` : '0ms' }}
               >
                 <div className="w-10 h-10 flex items-center justify-center rounded-full bg-white shadow-md">
                   <link.icon className="w-5 h-5" style={{ color: link.color }} />

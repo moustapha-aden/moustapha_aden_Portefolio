@@ -42,7 +42,7 @@ const Contact = () => {
   return (
     <section id="contact" ref={sectionRef} className="contact py-20">
       <div className="max-w-[1200px] mx-auto px-6">
-        <h2 className={`text-4xl font-bold text-center mb-12 text-gray-900 dark:text-white transition-all duration-700 ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-6'}`}>
+        <h2 className={`section-title-reveal text-4xl font-bold text-center mb-12 text-gray-900 dark:text-white transition-all duration-700 ${isInView ? 'opacity-100 translate-y-0 revealed' : 'opacity-0 -translate-y-6'}`}>
           {t.contact.title}
         </h2>
         <p className={`text-center text-gray-600 dark:text-gray-300 text-lg mb-12 transition-all duration-700 ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
@@ -57,15 +57,17 @@ const Contact = () => {
               href={contact.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="contact-card-animate bg-white dark:bg-gray-800 p-8 rounded-xl text-center shadow-md border border-gray-200 dark:border-gray-700 transition-all duration-500 text-gray-900 dark:text-white no-underline hover:-translate-y-2 hover:shadow-xl hover:border-black dark:hover:border-white hover:bg-gray-100 dark:hover:bg-gray-700"
-              style={{ '--contact-color': contact.color }}
+              className={`contact-card-animate bg-white dark:bg-gray-800 p-8 rounded-xl shadow-md border border-gray-200 dark:border-gray-700 transition-all duration-600 text-gray-900 dark:text-white no-underline hover:-translate-y-2 hover:shadow-xl hover:border-black dark:hover:border-white hover:bg-gray-100 dark:hover:bg-gray-700 flex flex-col items-center justify-center text-center ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+              style={{ '--contact-color': contact.color, transitionDelay: isInView ? `${200 + index * 100}ms` : '0ms' }}
             >
-              <contact.icon 
-                className="text-5xl mb-4 transition-all duration-300" 
-                style={{ color: contact.color }}
-              />
-              <h3 className="text-2xl mb-2 text-gray-900 dark:text-white">{contact.label}</h3>
-              <p className="text-gray-600 dark:text-gray-300">{contact.text}</p>
+              <span className="flex items-center justify-center w-full mb-4">
+                <contact.icon 
+                  className="text-5xl transition-all duration-300" 
+                  style={{ color: contact.color }}
+                />
+              </span>
+              <h3 className="text-2xl mb-2 text-gray-900 dark:text-white w-full text-center">{contact.label}</h3>
+              <p className="text-gray-600 dark:text-gray-300 w-full text-center">{contact.text}</p>
             </a>
           ))}
         </div>

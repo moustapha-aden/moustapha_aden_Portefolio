@@ -15,10 +15,34 @@ section {
   text-align: center;
   margin-bottom: 3rem;
   color: #000000;
+  position: relative;
+  display: block;
+  width: 100%;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -0.5rem;
+  left: 50%;
+  width: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #000, transparent);
+  transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1), left 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateX(-50%);
+}
+
+.section-title.animate-visible::after,
+.section-title.revealed::after {
+  width: 120px;
 }
 
 [data-theme="dark"] .section-title {
   color: #FFFFFF;
+}
+
+[data-theme="dark"] .section-title::after {
+  background: linear-gradient(90deg, transparent, #fff, transparent);
 }
 
 /* Projects Section */
@@ -296,6 +320,41 @@ section {
   background: #FFFFFF;
   color: #000000;
   border-color: #FFFFFF;
+}
+
+.demo-btn {
+  background: #000000;
+  color: #FFFFFF;
+  border: 1px solid #000000;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+[data-theme="dark"] .demo-btn {
+  background: #FFFFFF;
+  color: #000000;
+  border-color: #FFFFFF;
+}
+
+.project-card.animate-in .demo-btn {
+  opacity: 1;
+  transform: translateY(0);
+  animation: fadeInUp 0.5s ease-out forwards;
+}
+
+.demo-btn:hover {
+  background: #2563eb;
+  color: white;
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.3);
+  border-color: #2563eb;
+}
+
+[data-theme="dark"] .demo-btn:hover {
+  background: #2563eb;
+  color: #FFFFFF;
+  border-color: #2563eb;
 }
 
 /* About Section */
@@ -710,5 +769,28 @@ section {
 
 .animate-fade-up {
   animation: professionalFadeUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* Titres de section avec soulignement animé (réutilisable) */
+.section-title-reveal {
+  position: relative;
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+.section-title-reveal::after {
+  content: '';
+  position: absolute;
+  bottom: -0.5rem;
+  left: 50%;
+  width: 0;
+  height: 3px;
+  background: currentColor;
+  opacity: 0.6;
+  transform: translateX(-50%);
+  transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.section-title-reveal.revealed::after {
+  width: 80px;
 }
 

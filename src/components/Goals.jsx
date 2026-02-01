@@ -92,9 +92,10 @@ const Goals = () => {
         {goals.map((goal, index) => (
           <li 
             key={index} 
-            className={`flex items-center gap-4 p-4 mb-2 rounded-lg transition-all duration-300 ${
+            className={`flex items-center gap-4 p-4 mb-2 rounded-lg transition-all duration-500 hover:bg-gray-100 dark:hover:bg-gray-700 hover:translate-x-1 ${
               goal.completed ? 'opacity-70' : ''
-            } hover:bg-gray-100 dark:hover:bg-gray-700`}
+            } ${visible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-4'}`}
+            style={{ transitionDelay: visible ? `${delay + 50 + index * 40}ms` : '0ms' }}
           >
             {goal.completed ? (
               <FaCheckCircle className="text-xl text-gray-600 dark:text-gray-400" />
@@ -111,7 +112,7 @@ const Goals = () => {
   return (
     <section id="goals" ref={sectionRef} className="goals py-20">
       <div className="max-w-[1200px] mx-auto px-6">
-        <h2 className={`text-4xl font-bold text-center mb-12 text-gray-900 dark:text-white transition-all duration-700 ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-6'}`}>
+        <h2 className={`section-title-reveal text-4xl font-bold text-center mb-12 text-gray-900 dark:text-white transition-all duration-700 ${isInView ? 'opacity-100 translate-y-0 revealed' : 'opacity-0 -translate-y-6'}`}>
           {t.goals.title}
         </h2>
         <div className={`grid grid-cols-1 md:grid-cols-2 gap-8 transition-all duration-700 ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}

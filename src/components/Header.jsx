@@ -7,9 +7,14 @@ import { translations } from '../translations';
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const { language, toggleLanguage } = useLanguage();
   const { theme, toggleTheme } = useTheme();
   const t = translations[language];
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -36,9 +41,9 @@ const Header = () => {
   };
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-[1000] transition-all duration-300 backdrop-blur-md border-b ${
+    <header className={`fixed top-0 left-0 right-0 z-[1000] backdrop-blur-md border-b transition-all duration-500 ease-out ${
       theme === 'dark' ? 'bg-black/95 border-gray-800' : 'bg-white/95 border-gray-200'
-    } ${isScrolled ? 'shadow-md' : ''}`}>
+    } ${isScrolled ? 'shadow-md' : ''} ${mounted ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'}`}>
       <div className="max-w-[1200px] mx-auto px-6">
         <div className="flex justify-between items-center py-4">
           <div className="logo">
@@ -57,10 +62,10 @@ const Header = () => {
                   e.preventDefault();
                   scrollToSection(item.id);
                 }}
-                className="relative text-gray-900 dark:text-white font-medium transition-all duration-300 hover:text-black dark:hover:text-white group"
+                className="relative text-gray-900 dark:text-white font-medium transition-all duration-300 hover:text-black dark:hover:text-white group py-1"
               >
                 {item.label}
-                <span className="absolute bottom-[-5px] left-0 w-0 h-0.5 bg-black dark:bg-white transition-all duration-300 group-hover:w-full"></span>
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-black dark:bg-white transition-all duration-300 ease-out group-hover:w-full"></span>
               </a>
             ))}
           </nav>
@@ -91,8 +96,8 @@ const Header = () => {
         </div>
       </div>
       {/* Mobile Menu */}
-      <nav className={`md:hidden fixed top-[70px] left-0 right-0 bg-white dark:bg-black flex-col p-8 shadow-lg transform transition-transform duration-300 border-b border-gray-200 dark:border-gray-800 ${
-        isMenuOpen ? 'translate-x-0' : '-translate-x-full'
+      <nav className={`md:hidden fixed top-[70px] left-0 right-0 bg-white dark:bg-black flex flex-col p-8 shadow-lg border-b border-gray-200 dark:border-gray-800 transition-transform duration-300 ease-out ${
+        isMenuOpen ? 'translate-x-0 opacity-100' : '-translate-x-full opacity-0 pointer-events-none'
       }`}>
         {menuItems.map((item) => (
           <a

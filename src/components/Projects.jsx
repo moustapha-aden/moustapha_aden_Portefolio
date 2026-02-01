@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { FaGithub } from 'react-icons/fa';
+import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
 import { useLanguage } from '../context/LanguageContext';
 import { useInView } from '../hooks/useInView';
 import { translations } from '../translations';
@@ -20,7 +20,7 @@ const Projects = () => {
         fr: "Plateforme de guide Ecampus France - Plateforme pour guider les étudiants djiboutiens dans leurs inscriptions au programme des études supérieures en France, bourses et demandes.",
         en: "Ecampus France Guide Platform - Platform to guide Djiboutian students through their applications for higher education in France, scholarships and requests."
       },
-      image: "https://placehold.co/800x500/1e40af/white?text=Documentation+Ecampus+France",
+      image: "images/GEFD.png",
       tags: ["Next.js", "TypeScript"],
       github: "https://github.com/moustapha-aden/GEFD-Project",
       demo: "https://gefd-project.vercel.app"
@@ -32,9 +32,10 @@ const Projects = () => {
         fr: "Service de livraison de médicaments - Plateforme de livraison de médicaments avec gestion des commandes, suivi en temps réel et interface moderne.",
         en: "Medication Delivery Service - Medication delivery platform with order management, real-time tracking and modern interface."
       },
-      image: "https://images.unsplash.com/photo-1587854692152-cbe660dbde88?w=800&h=500&fit=crop&q=80",
+      image: "images/dawadrop.png",
       tags: ["Laravel", "React", "MySQL"],
-      github: "https://github.com/moustapha-aden/DawaDrop"
+      github: "https://github.com/moustapha-aden/DawaDrop",
+      demo: "https://dawadrop-02zaq.sevalla.app/"
     },
     {
       id: 3,
@@ -43,7 +44,7 @@ const Projects = () => {
         fr: "Application mobile invocations islamiques - Application dédiée aux invocations et adkâr islamiques pour faciliter l'accès aux invocations authentiques au quotidien.",
         en: "Islamic Invocations Mobile App - App dedicated to Islamic invocations and adkâr to facilitate access to authentic invocations in daily life."
       },
-      image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&h=500&fit=crop&q=80",
+      image: "images/sakinah.png",
       tags: ["React Native", "TypeScript", "Expo"],
       github: "https://github.com/moustapha-aden/sakinah"
     },
@@ -136,7 +137,7 @@ const Projects = () => {
       <div className="container">
         <h2 
           ref={titleRef}
-          className={`section-title transition-all duration-700 ${isTitleInView ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-6'}`}
+          className={`section-title text-center transition-all duration-700 ${isTitleInView ? 'opacity-100 translate-y-0 revealed' : 'opacity-0 -translate-y-6'}`}
         >
           {t.projects.title}
         </h2>
@@ -171,6 +172,17 @@ const Projects = () => {
                     >
                       <FaGithub />
                     </a>
+                    {project.demo && (
+                      <a
+                        href={project.demo}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="project-link"
+                        aria-label={t.projects.viewDemo}
+                      >
+                        <FaExternalLinkAlt />
+                      </a>
+                    )}
                   </div>
                 </div>
                 <div className="project-content">
@@ -196,6 +208,16 @@ const Projects = () => {
                     >
                       <FaGithub /> {t.projects.code}
                     </a>
+                    {project.demo && (
+                      <a
+                        href={project.demo}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="project-btn demo-btn"
+                      >
+                        <FaExternalLinkAlt /> {t.projects.viewDemo}
+                      </a>
+                    )}
                   </div>
                 </div>
               </div>

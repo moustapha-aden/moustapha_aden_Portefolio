@@ -3,7 +3,7 @@ import {
   FaReact, FaLaravel, FaMobileAlt, FaDatabase, FaGitAlt,
   FaGithub, FaCodeBranch
 } from 'react-icons/fa';
-import { SiNextdotjs, SiTailwindcss, SiTypescript, SiPostgresql, SiMysql, SiPostman } from 'react-icons/si';
+import { SiNextdotjs, SiTailwindcss, SiTypescript, SiPostgresql, SiMysql, SiPostman, SiDjango } from 'react-icons/si';
 import { useLanguage } from '../context/LanguageContext';
 import { useInView } from '../hooks/useInView';
 import { translations } from '../translations';
@@ -25,6 +25,7 @@ const TechStack = () => {
   const frameworks = [
     { name: "Next.js", icon: SiNextdotjs, color: "#000000" },
     { name: "Laravel", icon: FaLaravel, color: "#FF2D20" },
+    { name: "Django", icon: SiDjango, color: "#092E20" },
     { name: "React", icon: FaReact, color: "#61DAFB" },
     { name: "React Native", icon: FaMobileAlt, color: "#61DAFB" },
     { name: "Tailwind CSS", icon: SiTailwindcss, color: "#06B6D4" },
@@ -52,8 +53,8 @@ const TechStack = () => {
         {items.map((item, index) => (
           <div 
             key={index} 
-            className="flex items-center gap-2 px-4 py-3 bg-gray-100 dark:bg-gray-700 rounded-lg transition-all duration-300 border border-gray-200 dark:border-gray-600 hover:-translate-y-0.5 hover:shadow-md"
-            style={{ '--tech-color': item.color }}
+            className={`flex items-center gap-2 px-4 py-3 bg-gray-100 dark:bg-gray-700 rounded-lg border border-gray-200 dark:border-gray-600 transition-all duration-500 hover:-translate-y-1 hover:shadow-lg hover:scale-105 ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
+            style={{ '--tech-color': item.color, transitionDelay: isInView ? `${delay + 80 + index * 40}ms` : '0ms' }}
           >
             <item.icon className="text-2xl" style={{ color: item.color }} />
             <span className="font-medium text-gray-900 dark:text-white">{item.name}</span>
@@ -66,7 +67,7 @@ const TechStack = () => {
   return (
     <section id="tech" ref={sectionRef} className="tech-stack py-20">
       <div className="max-w-[1200px] mx-auto px-6">
-        <h2 className={`text-4xl font-bold text-center mb-12 text-gray-900 dark:text-white transition-all duration-700 ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-6'}`}>
+        <h2 className={`section-title-reveal text-4xl font-bold text-center mb-12 text-gray-900 dark:text-white transition-all duration-700 ${isInView ? 'opacity-100 translate-y-0 revealed' : 'opacity-0 -translate-y-6'}`}>
           {t.tech.title}
         </h2>
         <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 transition-all duration-700 ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
