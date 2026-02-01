@@ -42,9 +42,11 @@ const Header = () => {
       <div className="max-w-[1200px] mx-auto px-6">
         <div className="flex justify-between items-center py-4">
           <div className="logo">
-            <span className="text-2xl font-bold text-gray-900 dark:text-white transition-colors">
-              Moustapha Aden
-            </span>
+            <a href="#hero">
+              <span className="text-2xl font-bold text-gray-900 dark:text-white transition-colors">
+                Moustapha Aden
+              </span>
+            </a>
           </div>
           <nav className={`hidden md:flex gap-8 items-center`}>
             {menuItems.map((item) => (

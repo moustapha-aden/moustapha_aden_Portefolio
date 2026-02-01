@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { FaGithub } from 'react-icons/fa';
 import { useLanguage } from '../context/LanguageContext';
+import { useInView } from '../hooks/useInView';
 import { translations } from '../translations';
 
 const Projects = () => {
@@ -9,10 +10,45 @@ const Projects = () => {
   const [visibleProjects, setVisibleProjects] = useState([]);
   const projectsRef = useRef([]);
   const sectionRef = useRef(null);
+  const [titleRef, isTitleInView] = useInView({ threshold: 0.2 });
 
   const projects = [
     {
       id: 1,
+      name: "GEFD-Project",
+      description: {
+        fr: "Plateforme de guide Ecampus France - Plateforme pour guider les étudiants djiboutiens dans leurs inscriptions au programme des études supérieures en France, bourses et demandes.",
+        en: "Ecampus France Guide Platform - Platform to guide Djiboutian students through their applications for higher education in France, scholarships and requests."
+      },
+      image: "https://placehold.co/800x500/1e40af/white?text=Documentation+Ecampus+France",
+      tags: ["Next.js", "TypeScript"],
+      github: "https://github.com/moustapha-aden/GEFD-Project",
+      demo: "https://gefd-project.vercel.app"
+    },
+    {
+      id: 2,
+      name: "DawaDrop",
+      description: {
+        fr: "Service de livraison de médicaments - Plateforme de livraison de médicaments avec gestion des commandes, suivi en temps réel et interface moderne.",
+        en: "Medication Delivery Service - Medication delivery platform with order management, real-time tracking and modern interface."
+      },
+      image: "https://images.unsplash.com/photo-1587854692152-cbe660dbde88?w=800&h=500&fit=crop&q=80",
+      tags: ["Laravel", "React", "MySQL"],
+      github: "https://github.com/moustapha-aden/DawaDrop"
+    },
+    {
+      id: 3,
+      name: "Sakinah",
+      description: {
+        fr: "Application mobile invocations islamiques - Application dédiée aux invocations et adkâr islamiques pour faciliter l'accès aux invocations authentiques au quotidien.",
+        en: "Islamic Invocations Mobile App - App dedicated to Islamic invocations and adkâr to facilitate access to authentic invocations in daily life."
+      },
+      image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&h=500&fit=crop&q=80",
+      tags: ["React Native", "TypeScript", "Expo"],
+      github: "https://github.com/moustapha-aden/sakinah"
+    },
+    {
+      id: 4,
       name: "CertiCarte",
       description: {
         fr: "Système de gestion de certifications - Gestion complète des certifications avec suivi, validation et génération de certificats numériques.",
@@ -23,7 +59,7 @@ const Projects = () => {
       github: "https://github.com/moustapha-aden/CertiCarte"
     },
     {
-      id: 2,
+      id: 5,
       name: "Site-de-publicité",
       description: {
         fr: "Plateforme publicitaire moderne - Plateforme moderne de gestion publicitaire avec système de paiement intégré et analytics avancés.",
@@ -34,7 +70,7 @@ const Projects = () => {
       github: "https://github.com/moustapha-aden/Site-de-publicite/"
     },
     {
-      id: 3,
+      id: 6,
       name: "PrintManager",
       description: {
         fr: "Système de gestion des travaux d'impression - Système de gestion des travaux d'impression avec suivi en temps réel et notifications.",
@@ -45,7 +81,7 @@ const Projects = () => {
       github: "https://github.com/moustapha-aden/PrintManager"
     },
     {
-      id: 4,
+      id: 7,
       name: "Clinique dentaire",
       description: {
         fr: "Site web de clinique dentaire - Site web moderne pour une clinique dentaire avec prise de rendez-vous en ligne, gestion des patients et présentation des services.",
@@ -98,7 +134,12 @@ const Projects = () => {
   return (
     <section id="projects" className="projects" ref={sectionRef}>
       <div className="container">
-        <h2 className="section-title">{t.projects.title}</h2>
+        <h2 
+          ref={titleRef}
+          className={`section-title transition-all duration-700 ${isTitleInView ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-6'}`}
+        >
+          {t.projects.title}
+        </h2>
         <div className="projects-grid">
           {projects.map((project, index) => {
             const isVisible = visibleProjects.includes(project.id);
@@ -111,7 +152,15 @@ const Projects = () => {
                 style={{ animationDelay: `${index * 0.15}s` }}
               >
                 <div className="project-image">
-                  <img src={project.image} alt={project.name} />
+                  <img 
+                    src={project.image} 
+                    alt={project.name}
+                    onError={(e) => {
+                      e.target.onerror = null;
+                      e.target.src = `https://picsum.photos/seed/${project.id}-${project.name}/800/500`;
+                    }}
+                    loading="lazy"
+                  />
                   <div className="project-overlay">
                     <a
                       href={project.github}

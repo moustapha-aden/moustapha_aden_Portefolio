@@ -12,14 +12,14 @@ export const translations = {
     hero: {
       greeting: "👋 Salut, je suis",
       name: "Moustapha Aden",
-      subtitle: "Diplômé de l'Université de Djibouti 🇩🇯, développeur full-stack junior",
+      subtitle: "Diplômé de l'Université de Djibouti 🇩🇯, développeur full-stack maîtrisant TypeScript, Python, Laravel, React, React Native et Next.js",
       typingText: "Développeur Full Stack & Passionné de Cybersécurité"
     },
     // About
     about: {
       title: "🚀 À propos de moi",
-      description1: "Je suis un <strong>Développeur Full Stack</strong> passionné et <strong>Passionné de Cybersécurité</strong>, actuellement diplômé en Informatique. Basé à Djibouti, je parle plusieurs langues et j'adore créer des applications web et mobiles modernes.",
-      description2: "Mon focus actuel est de maîtriser <strong>Laravel</strong> et <strong>React</strong> pour le développement full-stack, explorer <strong>React Native</strong> pour les applications mobiles, approfondir <strong>Python</strong> pour l'automatisation, et élargir mes connaissances en <strong>Cybersécurité</strong>.",
+      description1: "Je suis un <strong>Développeur Full Stack</strong> passionné et <strong>Passionné de Cybersécurité</strong>, diplômé en Informatique. Basé à Djibouti, je maîtrise <strong>TypeScript</strong>, <strong>Python</strong>, <strong>Laravel</strong>, <strong>React</strong>, <strong>React Native</strong> et <strong>Next.js</strong> pour créer des applications web et mobiles modernes.",
+      description2: "J'ai développé des projets full-stack avec Laravel et React, des applications mobiles avec React Native (Sakinah), et des plateformes avec Next.js (GEFD). Je maîtrise Python pour l'automatisation et je continue à approfondir la <strong>Cybersécurité</strong>.",
       funFact: "💡 <strong>Fait amusant :</strong> J'adore automatiser tout ce que je peux ! 🤖"
     },
     // Projects
@@ -30,14 +30,14 @@ export const translations = {
     },
     // Tech Stack
     tech: {
-      title: " Stack Technique & Outils",
+      title: "🛠️ Stack Technique & Outils",
       languages: "Langages",
-      frameworks: " Frameworks & Bibliothèques",
-      databases: " Bases de données & Outils"
+      frameworks: "Frameworks & Bibliothèques",
+      databases: "Bases de données & Outils"
     },
     // GitHub Stats
     github: {
-      title: " Statistiques GitHub",
+      title: "📊 Statistiques GitHub",
       stats: "Statistiques GitHub",
       streak: "Série GitHub",
       languages: "Langages les plus utilisés",
@@ -46,7 +46,7 @@ export const translations = {
     },
     // Goals
     goals: {
-      title: " Objectifs pour 2025",
+      title: "🎯 Objectifs pour 2026",
       technical: "Objectifs Techniques",
       community: "Objectifs Communautaires"
     },
@@ -91,14 +91,14 @@ export const translations = {
     hero: {
       greeting: "👋 Hi, I'm",
       name: "Moustapha Aden",
-      subtitle: "I graduate of the University of Djibouti 🇩🇯, a full-stack developer junior",
+      subtitle: "Graduate of the University of Djibouti 🇩🇯, full-stack developer mastering TypeScript, Python, Laravel, React, React Native and Next.js",
       typingText: "Full Stack Developer & Cybersecurity Enthusiast"
     },
     // About
     about: {
       title: "🚀 About Me",
-      description1: "I'm a passionate <strong>Full Stack Developer</strong> and <strong>Cybersecurity Enthusiast</strong>, currently graduated in Software Engineering. Based in Djibouti, I'm fluent in multiple languages and love building modern web and mobile applications.",
-      description2: "My current focus is on mastering <strong>Laravel</strong> and <strong>React</strong> for full-stack development, exploring <strong>React Native</strong> for mobile apps, diving deep into <strong>Python</strong> for automation, and expanding my knowledge in <strong>Cybersecurity</strong>.",
+      description1: "I'm a passionate <strong>Full Stack Developer</strong> and <strong>Cybersecurity Enthusiast</strong>, graduated in Computer Science. Based in Djibouti, I master <strong>TypeScript</strong>, <strong>Python</strong>, <strong>Laravel</strong>, <strong>React</strong>, <strong>React Native</strong> and <strong>Next.js</strong> to build modern web and mobile applications.",
+      description2: "I've developed full-stack projects with Laravel and React, mobile apps with React Native (Sakinah), and platforms with Next.js (GEFD). I master Python for automation and continue to deepen my knowledge in <strong>Cybersecurity</strong>.",
       funFact: "💡 <strong>Fun Fact:</strong> I love automating everything I can! 🤖"
     },
     // Projects
@@ -125,7 +125,7 @@ export const translations = {
     },
     // Goals
     goals: {
-      title: "🎯 Goals for 2025",
+      title: "🎯 Goals for 2026",
       technical: "🚀 Technical Goals",
       community: "🤝 Community Goals"
     },

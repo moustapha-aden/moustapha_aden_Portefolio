@@ -1,16 +1,38 @@
 import { FaRocket, FaUsers, FaCheckCircle, FaCircle } from 'react-icons/fa';
 import { useLanguage } from '../context/LanguageContext';
+import { useInView } from '../hooks/useInView';
 import { translations } from '../translations';
 
 const Goals = () => {
   const { language } = useLanguage();
   const t = translations[language];
+  const [sectionRef, isInView] = useInView({ threshold: 0.1 });
 
   const technicalGoals = [
     { 
       fr: "Maîtriser le développement Full-Stack (Laravel + React)", 
       en: "Master Full-Stack Development (Laravel + React)",
-      completed: false 
+      completed: true 
+    },
+    { 
+      fr: "Maîtriser Next.js pour le développement web moderne", 
+      en: "Master Next.js for modern web development",
+      completed: true 
+    },
+    { 
+      fr: "Créer des applications mobiles prêtes pour la production avec React Native", 
+      en: "Build production-ready mobile apps with React Native",
+      completed: true 
+    },
+    { 
+      fr: "Maîtriser Python pour l'automatisation et le scripting", 
+      en: "Master Python for automation and scripting",
+      completed: true 
+    },
+    { 
+      fr: "Maîtriser TypeScript pour le développement frontend/backend", 
+      en: "Master TypeScript for frontend/backend development",
+      completed: true 
     },
     { 
       fr: "Approfondir la Cybersécurité & le Hacking Éthique", 
@@ -18,13 +40,8 @@ const Goals = () => {
       completed: false 
     },
     { 
-      fr: "Créer des applications mobiles prêtes pour la production avec React Native", 
-      en: "Build production-ready mobile apps with React Native",
-      completed: false 
-    },
-    { 
-      fr: "Implémenter des fonctionnalités IA/ML dans les applications web", 
-      en: "Implement AI/ML features in web applications",
+      fr: "Implémenter des fonctionnalités IA/ML dans les applications web (Python)", 
+      en: "Implement AI/ML features in web applications (Python)",
       completed: false 
     },
     { 
@@ -62,8 +79,11 @@ const Goals = () => {
     }
   ];
 
-  const GoalList = ({ title, goals, icon: Icon }) => (
-    <div className="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-md border border-gray-200 dark:border-gray-700">
+  const GoalList = ({ title, goals, icon: Icon, delay = 0, visible }) => (
+    <div 
+      className={`bg-white dark:bg-gray-800 p-8 rounded-xl shadow-md border border-gray-200 dark:border-gray-700 goal-card-animate transition-all duration-700 ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+      style={{ transitionDelay: `${delay}ms` }}
+    >
       <div className="flex items-center gap-4 mb-6">
         <Icon className="text-3xl text-black dark:text-white" />
         <h3 className="text-2xl font-bold text-gray-900 dark:text-white">{title}</h3>
@@ -89,21 +109,26 @@ const Goals = () => {
   );
 
   return (
-    <section id="goals" className="goals py-20">
+    <section id="goals" ref={sectionRef} className="goals py-20">
       <div className="max-w-[1200px] mx-auto px-6">
-        <h2 className="text-4xl font-bold text-center mb-12 text-gray-900 dark:text-white">
+        <h2 className={`text-4xl font-bold text-center mb-12 text-gray-900 dark:text-white transition-all duration-700 ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-6'}`}>
           {t.goals.title}
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className={`grid grid-cols-1 md:grid-cols-2 gap-8 transition-all duration-700 ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+          style={{ transitionDelay: isInView ? '0.2s' : '0s' }}>
           <GoalList 
             title={t.goals.technical}
             goals={technicalGoals} 
             icon={FaRocket}
+            delay={200}
+            visible={isInView}
           />
           <GoalList 
             title={t.goals.community}
             goals={communityGoals} 
             icon={FaUsers}
+            delay={350}
+            visible={isInView}
           />
         </div>
       </div>

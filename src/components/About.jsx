@@ -1,9 +1,11 @@
 import { useLanguage } from '../context/LanguageContext';
+import { useInView } from '../hooks/useInView';
 import { translations } from '../translations';
 
 const About = () => {
   const { language } = useLanguage();
   const t = translations[language];
+  const [sectionRef, isInView] = useInView({ threshold: 0.15 });
   
   const profile = {
     role: {
@@ -19,7 +21,7 @@ const About = () => {
       fr: ["Français", "Arabe", "Somali", "Anglais"],
       en: ["French", "Arabic", "Somali", "English"]
     },
-    currentFocus: ["Laravel", "React", "React Native", "Python", "Cybersecurity"],
+    currentFocus: ["TypeScript", "Python", "Next.js", "Laravel", "React", "React Native", "Cybersecurity"],
     interests: {
       fr: ["Développement Web", "Application Mobile", "Automatisation", "Open Source"],
       en: ["Web Development", "Mobile Application", "Automation", "Open Source"]
@@ -27,13 +29,13 @@ const About = () => {
   };
 
   return (
-    <section id="about" className="about py-20">
+    <section id="about" ref={sectionRef} className="about py-20">
       <div className="max-w-[1200px] mx-auto px-6">
-        <h2 className="text-4xl font-bold text-center mb-12 text-gray-900 dark:text-white">
+        <h2 className={`text-4xl font-bold text-center mb-12 text-gray-900 dark:text-white transition-all duration-700 ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-6'}`}>
           {t.about.title}
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-          <div className="bg-[#1E1E1E] rounded-xl overflow-hidden shadow-xl">
+        <div className={`grid grid-cols-1 md:grid-cols-2 gap-12 items-center transition-all duration-700 delay-200 ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <div className="bg-[#1E1E1E] rounded-xl overflow-hidden shadow-xl tech-card-animate">
             <div className="flex items-center gap-2 p-4 bg-[#2D2D2D]">
               <span className="w-3 h-3 rounded-full bg-[#FF5F56]"></span>
               <span className="w-3 h-3 rounded-full bg-[#FFBD2E]"></span>
@@ -52,7 +54,7 @@ const About = () => {
 };`}
             </pre>
           </div>
-          <div className="text-gray-600 dark:text-gray-300">
+          <div className="text-gray-600 dark:text-gray-300 tech-card-animate">
             <p className="mb-6 text-lg leading-relaxed" dangerouslySetInnerHTML={{ __html: t.about.description1 }} />
             <p className="mb-6 text-lg leading-relaxed" dangerouslySetInnerHTML={{ __html: t.about.description2 }} />
             <div className="bg-black dark:bg-black text-white p-6 rounded-xl mt-8 border-2 border-black dark:border-black">
