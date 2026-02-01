@@ -60,10 +60,11 @@ const Contact = () => {
               className={`contact-card-animate bg-white dark:bg-gray-800 p-8 rounded-xl shadow-md border border-gray-200 dark:border-gray-700 transition-all duration-600 text-gray-900 dark:text-white no-underline hover:-translate-y-2 hover:shadow-xl hover:border-black dark:hover:border-white hover:bg-gray-100 dark:hover:bg-gray-700 flex flex-col items-center justify-center text-center ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
               style={{ '--contact-color': contact.color, transitionDelay: isInView ? `${200 + index * 100}ms` : '0ms' }}
             >
-              <span className="flex items-center justify-center w-full mb-4">
+              <span className="contact-icon-wrapper flex items-center justify-center w-full mb-4">
                 <contact.icon 
-                  className="text-5xl transition-all duration-300" 
+                  className="text-5xl transition-all duration-300"
                   style={{ color: contact.color }}
+                  aria-hidden
                 />
               </span>
               <h3 className="text-2xl mb-2 text-gray-900 dark:text-white w-full text-center">{contact.label}</h3>
